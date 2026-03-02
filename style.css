@@ -88,6 +88,24 @@ header {
 .logo {
     display: flex;
     align-items: center;
+    gap: 12px;
+}
+
+.brand-name {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #4a4a4a;
+    letter-spacing: 0.5px;
+    background: linear-gradient(45deg, var(--text-main), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: var(--transition);
+}
+
+.logo:hover .brand-name {
+    letter-spacing: 1px;
 }
 
 nav ul {
