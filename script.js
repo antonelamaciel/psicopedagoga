@@ -1,9 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Smooth Scroll for Navigation Links
+    // 1. Mobile Menu Toggle
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('nav');
+    const mobileIcon = mobileToggle.querySelector('i');
+
+    mobileToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        if (nav.classList.contains('active')) {
+            mobileIcon.classList.replace('ph-list', 'ph-x');
+        } else {
+            mobileIcon.classList.replace('ph-x', 'ph-list');
+        }
+    });
+
+    // 2. Smooth Scroll for Navigation Links
     const navLinks = document.querySelectorAll('nav a, .btn');
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            // Close mobile menu if open
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                mobileIcon.classList.replace('ph-x', 'ph-list');
+            }
+
             const href = link.getAttribute('href');
 
             // Only if it's an anchor link
@@ -22,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Scroll Reveal Animation using Intersection Observer
+    // 3. Scroll Reveal Animation using Intersection Observer
     const revealElements = document.querySelectorAll('.reveal');
 
     const revealCallback = (entries, observer) => {
@@ -45,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
-    // 3. Header Shadow on Scroll
+    // 4. Header Shadow on Scroll
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -59,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Simple fadeIn keyframe animation helper
-const style = document.createElement('style');
-style.textContent = `
+const styleTag = document.createElement('style');
+styleTag.textContent = `
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(styleTag);
