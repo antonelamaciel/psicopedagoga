@@ -327,6 +327,11 @@ nav ul li a:hover::after {
     max-width: 90%;
 }
 
+.hero-btns {
+    display: flex;
+    gap: 20px;
+}
+
 .btn {
     display: inline-block;
     padding: 18px 40px;
@@ -348,6 +353,17 @@ nav ul li a:hover::after {
     background: var(--primary-dark);
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(237, 71, 143, 0.35);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--primary);
+    border: 1px solid var(--primary-light);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-light);
+    transform: translateY(-5px);
 }
 
 /* --- Section Titles --- */
