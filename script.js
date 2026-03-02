@@ -69,10 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
+            header.style.backdropFilter = 'blur(15px)';
             header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.08)';
             header.style.padding = '15px 10%';
         } else {
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.03)';
+            header.style.backgroundColor = 'transparent';
+            header.style.backdropFilter = 'none';
+            header.style.boxShadow = 'none';
             header.style.padding = '20px 10%';
         }
     });
