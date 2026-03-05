@@ -650,6 +650,86 @@ nav ul li a:hover::after {
     color: var(--text-muted);
 }
 
+/* --- Books --- */
+.books {
+    background: var(--bg-light);
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.book-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow);
+}
+
+.book-img {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+
+.book-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.book-card:hover .book-img img {
+    transform: scale(1.05);
+}
+
+.book-info {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.book-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.book-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.book-price {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.book-info .btn {
+    width: 100%;
+    padding: 15px 0;
+}
+
 /* --- Testimonials --- */
 .testimonials-grid {
     display: grid;
@@ -939,5 +1019,121 @@ footer .logo {
 
     .cta-card {
         padding: 40px 25px;
+    }
+}
+
+/* --- WhatsApp Float --- */
+.whatsapp-float-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    pointer-events: none;
+}
+
+.whatsapp-float {
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: var(--transition), opacity 0.5s ease;
+    pointer-events: auto;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+}
+
+.whatsapp-bubble {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-main);
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+    white-space: nowrap;
+    border: 1px solid rgba(237, 71, 143, 0.1);
+}
+
+.whatsapp-bubble.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.whatsapp-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 20px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+}
+
+.transparent {
+    opacity: 0.3 !important;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 28px;
+    }
+}
+
+/* --- Books Float --- */
+.books-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 15px rgba(237, 71, 143, 0.25);
+    z-index: 2000;
+    transition: var(--transition);
+}
+
+.books-float:hover {
+    transform: scale(1.1) rotate(-5deg);
+    background-color: var(--primary-dark);
+    box-shadow: 0 8px 25px rgba(237, 71, 143, 0.4);
+}
+
+@media (max-width: 768px) {
+    .books-float {
+        bottom: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
     }
 }

@@ -67,7 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Header Shadow on Scroll
     const header = document.querySelector('header');
+
     window.addEventListener('scroll', () => {
+        // Header
         if (window.scrollY > 50) {
             header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
             header.style.backdropFilter = 'blur(15px)';
@@ -80,6 +82,33 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.padding = '20px 10%';
         }
     });
+
+    // 5. WhatsApp Floating Bubble Messages
+    const bubble = document.getElementById('whatsapp-bubble');
+    const messages = [
+        "agenda tu consulta!",
+        "no te quedes afuera",
+        "charlemos!",
+        "te esperamos"
+    ];
+    let currentMsgIndex = 0;
+
+    function showBubble() {
+        bubble.textContent = messages[currentMsgIndex];
+        bubble.classList.add('show');
+
+        // Hide after 3 seconds
+        setTimeout(() => {
+            bubble.classList.remove('show');
+            currentMsgIndex = (currentMsgIndex + 1) % messages.length;
+        }, 3000);
+    }
+
+    // Initial show
+    setTimeout(showBubble, 1000);
+
+    // Show every 8 seconds
+    setInterval(showBubble, 8000);
 });
 
 // Simple fadeIn keyframe animation helper
